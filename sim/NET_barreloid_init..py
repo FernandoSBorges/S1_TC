@@ -66,8 +66,8 @@ sim.net.addStims() 							# add network stimulation
 if addNoise:
     if sim.cfg.addNoiseIClamp: sim, vecs_dict = addNoiseIClamp(sim)
 
-# sim.setupRecording()              			# setup variables to record for each cell (spikes, V traces, etc)
-# sim.runSim()                      			# run parallel Neuron simulation  
+sim.setupRecording()              			# setup variables to record for each cell (spikes, V traces, etc)
+sim.runSim()                      			# run parallel Neuron simulation  
 sim.gatherData()                  			# gather spiking data and cell info from each node
 sim.analyze()
 
@@ -75,9 +75,15 @@ cfg.allpops = ['L6A_activated__pop', 'L6A_suppressed__pop', 'L6A_sparse__pop', '
                'L6CC_TPC_L1_cAD__pop', 'L6CC_UTPC_cAD__pop', 'L6CC_BPC_cAD__pop', 'L6CC_IPC_cAD__pop',
                'L6IN_LBC_bAC__pop', 'L6IN_LBC_bNA__pop', 'L6IN_LBC_cNA__pop', 
                'L6IN_MC_bAC__pop', 'L6IN_MC_bNA__pop', 'L6IN_MC_cAC__pop']
+               
+sim.analysis.plotShape(includePre=cfg.allpops, includePost = cfg.allpops, includeAxon=False, showSyns=False,
+    cvar= 'voltage', dist=0.6, elev=95, azim=-90, 
+    axisLabels=True, synStyle='o', 
+    clim= [-55, -65], showFig=False, saveFig=True, synSize=2, figSize=(18, 18))
 
-for popPre in cfg.allpops[0:3]:
-    for popPost in cfg.allpops[0:3]:
+
+for popPre in cfg.allpops[0:1]:
+    for popPost in cfg.allpops[5:6]:
         if popPre == popPost:
             sim.analysis.plot2Dnet(include= [popPre], figSize=(18, 18), fontSize=12, saveData=None,
                                saveFig= popPre + popPost + '_plot3D.png', showFig=False, view='xz', showConns=False)

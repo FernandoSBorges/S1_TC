@@ -18,7 +18,7 @@ saveFigFlag = '' # declared here, but altered afterwards
 #   Simulation options
 #------------------------------------------------------------------------------
 cfg       = specs.SimConfig()     # object of class SimConfig to store simulation configuration
-cfg.duration        = 11000 # (ms)
+cfg.duration        = 110 # (ms)
 cfg.dt              = 0.025                 # Internal integration timestep to use
 cfg.printRunTime    = 0.1 # (s)
 cfg.printPopAvgRates = True
@@ -100,7 +100,7 @@ cfg.L6Asubpops          = ['L6CC_TPC_L1_cAD','L6CC_UTPC_cAD','L6CC_BPC_cAD','L6C
 cfg.addL6Ainterconnections = True # --- IMPLEMENT THIS
 
 cfg.removeConns         = False
-cfg.singleCellPops      = False # bool or list of pops
+cfg.singleCellPops      = True # bool or list of pops
 
 cfg.simulateL6only      = True  # removes all pops that are not from L6 to tune connectivity
 
@@ -177,7 +177,7 @@ cfg.current_stim_Thal_L6A_IN_amp = 0.005
 cfg.simLabel = 'v0_batch1'
 cfg.saveFolder = '../data/'+cfg.simLabel
 # cfg.filename            = 'barr_net_'          # Set file output name
-cfg.savePickle          = True             # Save params, network and sim output to pickle file
+cfg.savePickle          = False             # Save params, network and sim output to pickle file
 cfg.saveJson            = False              # Save params, network and sim output to JSON file
 cfg.saveDataInclude     = ['simData', 'simConfig', 'netParams', 'net'] # ['simData'] # 
 cfg.saveCellConns       = True
